@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-import "./App.css";
+import "./styles.css";
 import Search from "./Search";
 import Cities from "./Cities";
 import Hourlyforecast from "./Hourlyforecast";
@@ -62,7 +62,8 @@ function App() {
       <div className="dailyheadline">Daily forecast</div>
       <Dailyforecast />
     </div>
-  );
+    
+  ); 
 }
 
 const rootElement = document.getElementById("root");
