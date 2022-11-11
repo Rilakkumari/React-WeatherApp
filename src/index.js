@@ -48,7 +48,7 @@ return (
         </div>
         <div className="col-4">
           <div className="temperature-wrapper">
-            <h4 id="currenttemp">20</h4>
+            <h4 id="currenttemp">{Math.round(temperature)}</h4>
             <a href="." className="celsius-link">
               °C|
             </a>
