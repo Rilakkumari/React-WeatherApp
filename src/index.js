@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import axios from "axios";
 
 import "./styles.css";
 import Search from "./Search";
@@ -7,8 +8,18 @@ import Cities from "./Cities";
 import Hourlyforecast from "./Hourlyforecast";
 import Dailyforecast from "./Dailyforecast";
 
-function App() {
-  return (
+export default function App() {
+function handleResponse(response){
+  console.log(response.data);
+}
+
+
+const apiKey = "5006c8b73e1b739b2c4f5817cb519343";
+let city = "London";
+let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;  
+  axios.get(apiUrl).then(handleResponse);
+
+return (
     <div className="container">
       <div className="weatherapp">
         <div className="row">
