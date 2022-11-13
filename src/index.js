@@ -6,10 +6,12 @@ import FormattedDate from "./FormattedDate";
 import Cities from "./Cities";
 import Hourlyforecast from "./Hourlyforecast";
 import Dailyforecast from "./Dailyforecast";
+import Temperature from "./Temperature";
+
 
 export default function App(props) {
   const [weatherData, setWeatherData] = useState({ ready: false });
-  const [city, setCity] = useState(props.defaultCity);
+  const [city, setCity] = useState("Paris");
   function handleResponse(response) {
     setWeatherData({
       ready: true,
@@ -21,7 +23,7 @@ export default function App(props) {
   }
 
   function search() {
-    const apiKey = "d954e13a4e22b470136cf62da9402c50";
+    const apiKey = "4ea8e5dff1b6d9441049f23868b12760";
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
     axios.get(apiUrl).then(handleResponse);
   }
@@ -77,15 +79,7 @@ export default function App(props) {
               </h3>
             </div>
             <div className="col-4">
-              <div className="temperature-wrapper">
-                <h4 id="currenttemp">{Math.round(weatherData.temperature)}</h4>
-                <a href="." className="celsius-link">
-                  °C|
-                </a>
-                <a href="." className="fahrenheit-link">
-                  °F
-                </a>
-              </div>
+           <Temperature celsius={props.data.temperature}/>   
             </div>
           </div>
 
