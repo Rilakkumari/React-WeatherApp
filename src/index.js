@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import axios from "axios";
-
 import "./styles.css";
 import Search from "./Search";
 import Cities from "./Cities";
@@ -9,15 +8,21 @@ import Hourlyforecast from "./Hourlyforecast";
 import Dailyforecast from "./Dailyforecast";
 
 export default function App() {
-  const [ready, setReady] = useState(false);
-  const [temperature, setTemperature] = useState (null);
+  const [weatherData, setWeatherData] = useState ({ready: false});
 function handleResponse(response){
   console.log(response.data);
-  setTemperature(response.data.main.temp);
-  setReady(true);
+  setWeatherData({
+    ready: true,
+    temperature: response.data.main.temp,
+    wind: response.data.wind.speed,
+    city: response.data.name,
+    weekday: "Sunday",
+    time: "17:00pm",
+  });
+
 }
 
-if (ready){
+if (weatherData.ready){
 return (
   <div className="container">
     <div className="weatherapp">
@@ -38,17 +43,17 @@ return (
       <Cities />
       <div className="row">
         <div className="col-4">
-          <h2 className="currentcity">Tokyo</h2>
+          <h2 className="currentcity">{weatherData.city}</h2>
         </div>
         <div className="col-4">
           <h3 className="currenttime">
-            currently on <span id="weekday"></span> <br />
-            at <span id="time"></span>
+            currently on <span id="weekday">{weatherData.weekday}</span> <br />
+            at <span id="time">{weatherData.time}</span>
           </h3>
         </div>
         <div className="col-4">
           <div className="temperature-wrapper">
-            <h4 id="currenttemp">{Math.round(temperature)}</h4>
+            <h4 id="currenttemp">{Math.round(weatherData.temperature)}</h4>
             <a href="." className="celsius-link">
               °C|
             </a>
@@ -61,7 +66,7 @@ return (
 
       <div className="extrainfo">
         <br />
-        Wind:<span id="wind"> 3 </span>km/h
+        Wind:<span id="wind">{Math.round(weatherData.wind)}</span>km/h
       </div>
       <br />
       <div className="dailyheadline">Hourly forecast</div>
@@ -82,12 +87,6 @@ let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${
 
   return "Loading...";
 }
-
-
-
-
-
-
 }
 
 const rootElement = document.getElementById("root");
