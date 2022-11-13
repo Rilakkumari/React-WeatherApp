@@ -2,14 +2,14 @@ import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import axios from "axios";
 import "./styles.css";
-import Search from "./Search";
 import FormattedDate from "./FormattedDate";
 import Cities from "./Cities";
 import Hourlyforecast from "./Hourlyforecast";
 import Dailyforecast from "./Dailyforecast";
 
-export default function App() {
+export default function App(props) {
   const [weatherData, setWeatherData] = useState({ ready: false });
+  const [city, setCity] = useState(props.defaultCity);
   function handleResponse(response) {
     setWeatherData({
       ready: true,
@@ -20,13 +20,38 @@ export default function App() {
     });
   }
 
+  function search() {
+    const apiKey = "d954e13a4e22b470136cf62da9402c50";
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+    axios.get(apiUrl).then(handleResponse);
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    search();
+  }
+
+  function handleCityChange(event) {
+    setCity(event.target.value);
+  }
   if (weatherData.ready) {
     return (
       <div className="container">
         <div className="weatherapp">
           <div className="row">
             <div className="col-2">
-              <Search />
+              <form onSubmit={handleSubmit} id="change-city-form">
+                <input
+                  id="search-text-input"
+                  type="text"
+                  placeholder="Change city"
+                  autocomplete="off"
+                  autofocus="on"
+                  input="search-text"
+                  onChange={handleCityChange}
+                />
+                <input type="submit" value="Search" class="btn btn-secondary" />
+              </form>
             </div>
             <div className="col-2 location">
               <form>
@@ -45,7 +70,9 @@ export default function App() {
             </div>
             <div className="col-4">
               <h3 className="currenttime">
-                currently on <span id="weekday"><FormattedDate date={weatherData.date} />
+                currently on{" "}
+                <span id="weekday">
+                  <FormattedDate date={weatherData.date} />
                 </span>{" "}
               </h3>
             </div>
@@ -77,11 +104,7 @@ export default function App() {
       </div>
     );
   } else {
-    const apiKey = "4ea8e5dff1b6d9441049f23868b12760";
-    let city = "Tokyo";
-    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-    axios.get(apiUrl).then(handleResponse);
-
+    search();
     return "Loading...";
   }
 }
