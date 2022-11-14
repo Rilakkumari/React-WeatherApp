@@ -11,7 +11,7 @@ import Temperature from "./Temperature";
 
 export default function App(props) {
   const [weatherData, setWeatherData] = useState({ ready: false });
-  const [city, setCity] = useState("Paris");
+  const [city, setCity] = useState("paris");
   function handleResponse(response) {
     setWeatherData({
       ready: true,
@@ -23,7 +23,7 @@ export default function App(props) {
   }
 
   function search() {
-    const apiKey = "4ea8e5dff1b6d9441049f23868b12760";
+    const apiKey = "d954e13a4e22b470136cf62da9402c50";
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
     axios.get(apiUrl).then(handleResponse);
   }
@@ -79,13 +79,13 @@ export default function App(props) {
               </h3>
             </div>
             <div className="col-4">
-           <Temperature celsius={props.data.temperature}/>   
+           <Temperature celsius={weatherData.temperature} />   
             </div>
           </div>
 
           <div className="extrainfo">
             <br />
-            Wind:<span id="wind">{Math.round(weatherData.wind)}</span>km/h
+            Wind:{""} <span id="wind">{Math.round(weatherData.wind)}</span>km/h
           </div>
           <br />
           <div className="dailyheadline">Hourly forecast</div>

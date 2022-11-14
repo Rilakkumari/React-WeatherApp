@@ -31,11 +31,7 @@ export default function Temperature(props){
             <a href="." className="celsius-link" onClick={showCelsius}>
               °C|
             </a>
-            <a
-              href="/"
-              className="fahrenheit-link"
-              onClick={showFahrenheit}
-            >
+            <a href="/" className="fahrenheit-link" onClick={showFahrenheit}>
               °F
             </a>
           </div>

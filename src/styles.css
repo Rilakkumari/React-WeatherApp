@@ -144,15 +144,19 @@
 .celsius-link {
   font-size: 25px;
   margin-top: 60px;
+  text-decoration: none;
 }
 
 .fahrenheit-link {
   font-size: 25px;
   margin-top: 60px;
+  text-decoration: none;
+  
 }
 
 .temperature-wrapper {
   display: flex;
+  
 }
 .col-4 {
   width: 100px;
