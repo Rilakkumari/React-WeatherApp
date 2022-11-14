@@ -9,16 +9,17 @@ import Dailyforecast from "./Dailyforecast";
 import Temperature from "./Temperature";
 
 
-export default function App(props) {
+export default function App() {
   const [weatherData, setWeatherData] = useState({ ready: false });
   const [city, setCity] = useState("tokyo");
+
   function handleResponse(response) {
     setWeatherData({
       ready: true,
-      icon: <img src="pictures/039-sun.png" alt="" className="icons" />,
       temperature: response.data.main.temp,
       wind: response.data.wind.speed,
       city: response.data.name,
+      iconUrl: `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
       date: new Date(response.data.dt * 1000),
     });
   }
@@ -70,7 +71,7 @@ export default function App(props) {
           <div className="row">
             <div className="col-4">
               <h2 className="currentcity">{weatherData.city}</h2>
-              <h2 className="currentCityIcon">{weatherData.icon}</h2>
+              <h2 className="currentCityIcon">{weatherData.iconUrl}</h2>
             </div>
             <div className="col-4">
               <h3 className="currenttime">
