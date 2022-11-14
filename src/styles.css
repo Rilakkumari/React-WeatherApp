@@ -144,14 +144,20 @@
 .celsius-link {
   font-size: 25px;
   margin-top: 60px;
+  margin-left: 5px;
   text-decoration: none;
+  color: #385170
 }
 
 .fahrenheit-link {
   font-size: 25px;
   margin-top: 60px;
   text-decoration: none;
-  
+  color: #385170;
+}
+.fahrenheit-link:hover,
+.celsius-link:hover{
+color: rgb(17, 1, 255);
 }
 
 .temperature-wrapper {

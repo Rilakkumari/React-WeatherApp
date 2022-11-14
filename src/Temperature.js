@@ -28,7 +28,7 @@ export default function Temperature(props){
         return (
           <div className="temperature-wrapper">
             <h4 id="currenttemp">{Math.round(fahrenheit)}</h4>
-            <a href="." className="celsius-link" onClick={showCelsius}>
+            <a href="/" className="celsius-link" onClick={showCelsius}>
               °C|
             </a>
             <a href="/" className="fahrenheit-link" onClick={showFahrenheit}>
