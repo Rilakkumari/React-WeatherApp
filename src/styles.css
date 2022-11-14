@@ -8,7 +8,7 @@
   font-family: "Rajdhani", sans-serif;
   border: 2px solid #385170;
   margin: 0px auto;
-  margin-top: 50px;
+  margin-top: 30px;
   width: 580px;
   border-radius: 8px;
 }
@@ -58,6 +58,12 @@
 .currentcity {
   margin-top: 50px;
   font-weight: bolder;
+}
+
+.currentCityIcon{
+  margin-left: 65px;
+  margin-bottom: 20px;
+  
 }
 
 .currentcity {

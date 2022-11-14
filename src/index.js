@@ -11,10 +11,11 @@ import Temperature from "./Temperature";
 
 export default function App(props) {
   const [weatherData, setWeatherData] = useState({ ready: false });
-  const [city, setCity] = useState("paris");
+  const [city, setCity] = useState("tokyo");
   function handleResponse(response) {
     setWeatherData({
       ready: true,
+      icon: <img src="pictures/039-sun.png" alt="" className="icons" />,
       temperature: response.data.main.temp,
       wind: response.data.wind.speed,
       city: response.data.name,
@@ -69,6 +70,7 @@ export default function App(props) {
           <div className="row">
             <div className="col-4">
               <h2 className="currentcity">{weatherData.city}</h2>
+              <h2 className="currentCityIcon">{weatherData.icon}</h2>
             </div>
             <div className="col-4">
               <h3 className="currenttime">
@@ -79,7 +81,7 @@ export default function App(props) {
               </h3>
             </div>
             <div className="col-4">
-           <Temperature celsius={weatherData.temperature} />   
+              <Temperature celsius={weatherData.temperature} />
             </div>
           </div>
 
