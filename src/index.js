@@ -71,7 +71,7 @@ export default function App() {
           <div className="row">
             <div className="col-4">
               <h2 className="currentcity">{weatherData.city}</h2>
-              <img className="currentCityIcon" src={weatherData.iconUrl} />
+              <img alt="icon" className="currentCityIcon" src={weatherData.iconUrl} />
             </div>
             <div className="col-4">
               <h3 className="currenttime">
