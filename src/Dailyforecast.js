@@ -38,13 +38,12 @@ export default function Dailyforecast(props) {
           <strong>30°</strong> 21°
         </div>
       </div>
-
     );
   } else {
     let apiKey = "d954e13a4e22b470136cf62da9402c50";
     let longitude = props.coordinates.lon;
     let latitude = props.coordinates.lat;
-    let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}appid=${apiKey}&units=metric`;
+    let apiUrl = `https://api.openweathermap.org/data/3.0/onecall?lat=${latitude}&lon=${longitude}appid=${apiKey}&units=metric`;
 
     axios.get(apiUrl).then(handleResponse);
 
