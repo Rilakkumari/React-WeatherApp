@@ -14,10 +14,12 @@ export default function App() {
   const [city, setCity] = useState("tokyo");
 
   function handleResponse(response) {
+    console.log(response.data);
     setWeatherData({
       ready: true,
       temperature: response.data.main.temp,
       wind: response.data.wind.speed,
+      coordinates: response.data.coord,
       city: response.data.name,
       iconUrl: `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
       date: new Date(response.data.dt * 1000),
@@ -97,7 +99,7 @@ export default function App() {
 
         <br />
         <div className="dailyheadline">Daily forecast</div>
-        <Dailyforecast />
+        <Dailyforecast coordinates={weatherData.coordinates} />
       </div>
     );
   } else {
