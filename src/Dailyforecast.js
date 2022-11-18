@@ -14,7 +14,7 @@ export default function Dailyforecast(props) {
     return (
       <div className="row dailyforecast">
         <div className="col-2">
-          Tue <img src="pictures/039-sun.png" alt="" className="icons" />
+          {forecast[0].dt} <img src="pictures/039-sun.png" alt="" className="icons" />
           <strong>{forecast[0].temp.max}°</strong> {forecast[0].temp.min}°
         </div>
         <div className="col-2">
@@ -40,10 +40,10 @@ export default function Dailyforecast(props) {
       </div>
     );
   } else {
-    let apiKey = "d954e13a4e22b470136cf62da9402c50";
+    let apiKey = "17ad6e67aa629189f73b053634668b20";
     let longitude = props.coordinates.lon;
     let latitude = props.coordinates.lat;
-    let apiUrl = `https://api.openweathermap.org/data/3.0/onecall?lat=${latitude}&lon=${longitude}appid=${apiKey}&units=metric`;
+    let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}appid=${apiKey}&units=metric`;
 
     axios.get(apiUrl).then(handleResponse);
 
