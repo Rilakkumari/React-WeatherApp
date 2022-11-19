@@ -14,21 +14,21 @@ export default function App() {
   const [city, setCity] = useState("tokyo");
 
   function handleResponse(response) {
-    console.log(response.data);
+
     setWeatherData({
       ready: true,
-      temperature: response.data.main.temp,
+      temperature: response.data.temperature.current,
       wind: response.data.wind.speed,
-      coordinates: response.data.coord,
-      city: response.data.name,
-      iconUrl: `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
-      date: new Date(response.data.dt * 1000),
+      coordinates: response.data.coordinates,
+      city: response.data.city,
+      iconUrl: `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`,
+      date: new Date(response.data.time * 1000),
     });
   }
 
   function search() {
-    const apiKey = "d954e13a4e22b470136cf62da9402c50";
-    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+    const apiKey = "85eadfabfd41246o03386b0bc2e86tcb";
+    let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
     axios.get(apiUrl).then(handleResponse);
   }
 
@@ -104,7 +104,7 @@ export default function App() {
     );
   } else {
     search();
-    return "Loading...";
+    return "Oops! Come back in a minute..";
   }
 }
 

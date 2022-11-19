@@ -14,37 +14,18 @@ export default function Dailyforecast(props) {
     return (
       <div className="row dailyforecast">
         <div className="col-2">
-          {forecast[0].dt} <img src="pictures/039-sun.png" alt="" className="icons" />
-          <strong>{forecast[0].temp.max}°</strong> {forecast[0].temp.min}°
-        </div>
-        <div className="col-2">
-          Wed <img src="pictures/038-cloudy-3.png" alt="" className="icons" />
-          <strong>12°</strong> 14°
-        </div>
-        <div className="col-2">
-          Thu <img src="pictures/011-cloudy.png" alt="" className="icons" />
-          <strong>21°</strong> 17°
-        </div>
-        <div className="col-2">
-          Fri <img src="pictures/034-cloudy-1.png" alt="" className="icons" />
-          <strong>24°</strong> 19°
-        </div>
-        <div className="col-2">
-          Sat <img src="pictures/039-sun.png" alt="" className="icons" />
-          <strong>26°</strong> 21°
-        </div>
-        <div className="col-2">
-          Sun <img src="pictures/043-warm.png" alt="" className="icons" />
-          <strong>30°</strong> 21°
+          {forecast[0].time}{" "}
+          <img src="pictures/039-sun.png" alt="" className="icons" />
+          <strong>{forecast[0].temperature.maximum}°</strong>{" "}
+          {forecast[0].temperature.minimum}°
         </div>
       </div>
     );
   } else {
-    let apiKey = "88724523008dc9e1be18f6eb6a959b67";
-    let longitude = props.coordinates.lon;
-    let latitude = props.coordinates.lat;
-    let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}appid=${apiKey}&units=metric`;
-
+    let apiKey = "8402ccd9e55983fce71eeeaa1d2bd1fc";
+    let longitude = props.coordinates.longitude;
+    let latitude = props.coordinates.latitude;
+    let apiUrl = `https://api.shecodes.io/weather/v1/current?lon=${longitude}&lat=${latitude}&key=${apiKey}&units=metric`;
     axios.get(apiUrl).then(handleResponse);
 
     return null;
