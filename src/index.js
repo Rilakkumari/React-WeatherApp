@@ -3,8 +3,6 @@ import ReactDOM from "react-dom";
 import axios from "axios";
 import "./styles.css";
 import FormattedDate from "./FormattedDate";
-import Cities from "./Cities";
-import Hourlyforecast from "./Hourlyforecast";
 import Dailyforecast from "./Dailyforecast";
 import Temperature from "./Temperature";
 
@@ -59,17 +57,7 @@ export default function App() {
                 <input type="submit" value="Search" class="btn btn-secondary" />
               </form>
             </div>
-            <div className="col-2 location">
-              <form>
-                <input
-                  type="submit"
-                  value="📍"
-                  className="btn btn-secondary location"
-                />
-              </form>
-            </div>
           </div>
-          <Cities />
           <div className="row">
             <div className="col-4">
               <h2 className="currentcity">{weatherData.city}</h2>
@@ -92,10 +80,7 @@ export default function App() {
             <br />
             Wind:{""} <span id="wind">{Math.round(weatherData.wind)}</span>km/h
           </div>
-          <br />
-          <div className="dailyheadline">Hourly forecast</div>
         </div>
-        <Hourlyforecast />
 
         <br />
         <div className="dailyheadline">Daily forecast</div>
@@ -104,7 +89,7 @@ export default function App() {
     );
   } else {
     search();
-    return "Oops! Come back in a minute..";
+    return "We're loading the weather app for you...";
   }
 }
 

@@ -16,8 +16,8 @@ export default function Dailyforecast(props) {
         <div className="col-2">
           {forecast[0].time}{" "}
           <img src="pictures/039-sun.png" alt="" className="icons" />
-          <strong>{forecast[0].temperature.maximum}°</strong>{" "}
-          {forecast[0].temperature.minimum}°
+          <strong>{props.data.temperature.maximum}°</strong>{" "}
+          {props.data.temperature.minimum}°
         </div>
       </div>
     );
@@ -25,7 +25,8 @@ export default function Dailyforecast(props) {
     let apiKey = "8402ccd9e55983fce71eeeaa1d2bd1fc";
     let longitude = props.coordinates.longitude;
     let latitude = props.coordinates.latitude;
-    let apiUrl = `https://api.shecodes.io/weather/v1/current?lon=${longitude}&lat=${latitude}&key=${apiKey}&units=metric`;
+    let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lon=${longitude}&lat=${latitude}&key=${apiKey}&units=metric`;
+    
     axios.get(apiUrl).then(handleResponse);
 
     return null;
