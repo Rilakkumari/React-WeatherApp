@@ -22,7 +22,7 @@ export default function Dailyforecast(props) {
       </div>
     );
   } else {
-    let apiKey = "8402ccd9e55983fce71eeeaa1d2bd1fc";
+    let apiKey = "85eadfabfd41246o03386b0bc2e86tcb";
     let longitude = props.coordinates.longitude;
     let latitude = props.coordinates.latitude;
     let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lon=${longitude}&lat=${latitude}&key=${apiKey}&units=metric`;
