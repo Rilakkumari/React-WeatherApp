@@ -16,8 +16,8 @@ export default function Dailyforecast(props) {
         <div className="col-2">
           {forecast[0].time}{" "}
           <img src="pictures/039-sun.png" alt="" className="icons" />
-          <strong>{props.data.temperature.maximum}°</strong>{" "}
-          {props.data.temperature.minimum}°
+          <strong>{forecast[0].temperature.maximum}°</strong>{" "}
+          {forecast[0].temperature.minimum}°
         </div>
       </div>
     );
