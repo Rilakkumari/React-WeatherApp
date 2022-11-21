@@ -3,7 +3,6 @@ import ReactDOM from "react-dom";
 import axios from "axios";
 import "./styles.css";
 import FormattedDate from "./FormattedDate";
-import Dailyforecast from "./Dailyforecast";
 import Temperature from "./Temperature";
 
 
@@ -81,10 +80,6 @@ export default function App() {
             Wind:{""} <span id="wind">{Math.round(weatherData.wind)}</span>km/h
           </div>
         </div>
-
-        <br />
-        <div className="dailyheadline">Daily forecast</div>
-        <Dailyforecast coordinates={weatherData.coordinates} />
       </div>
     );
   } else {

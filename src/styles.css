@@ -53,6 +53,11 @@
   
 }
 
+.forecastIcon{
+  size: 10px;
+  
+}
+
 .currenttime {
   font-size: 16px;
   width: 77px;
@@ -114,10 +119,6 @@
     rgb(254, 255, 165) 0%,
     rgb(255, 232, 182) 90%
   );
-}
-
-.icons {
-  width: 30px;
 }
 
 .celsius-link {
