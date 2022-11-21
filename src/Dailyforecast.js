@@ -10,14 +10,29 @@ export default function Dailyforecast(props) {
     setLoaded(true);
   }
 
+  function day(){
+    let date = new Date(forecast[0].time*1000);
+    let day = date.getDay();
+    let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Sat", "Sun"];
+
+    return days[day];
+  }
+
   if (loaded) {
     return (
       <div className="row dailyforecast">
         <div className="col-2">
-          {forecast[0].time}{" "}
-          <img src="pictures/039-sun.png" alt="" className="icons" />
-          <strong>{forecast[0].temperature.maximum}°</strong>{" "}
-          {forecast[0].temperature.minimum}°
+          <div>
+            {day()}{" "}
+            <img
+              alt="icon"
+              className="currentCityIcon"
+              src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/broken-clouds-day.png"
+              size="10"
+            />
+            <strong>{Math.round(forecast[0].temperature.maximum)}°</strong>{" "}
+            {Math.round(forecast[0].temperature.minimum)}°
+          </div>
         </div>
       </div>
     );
@@ -26,7 +41,7 @@ export default function Dailyforecast(props) {
     let longitude = props.coordinates.longitude;
     let latitude = props.coordinates.latitude;
     let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lon=${longitude}&lat=${latitude}&key=${apiKey}&units=metric`;
-    
+
     axios.get(apiUrl).then(handleResponse);
 
     return null;
